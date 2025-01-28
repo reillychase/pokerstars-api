@@ -17,4 +17,5 @@ git clone https://github.com/reillychase/pokerstars-handhistory-export.git
 Replace YOUR_USERNAME and YOUR_PASSWORD
 
 pip3 install stealth_requests
+
 python3 main.py
