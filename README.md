@@ -1,7 +1,9 @@
 # PokerStars Hand History Export
 Export hand history from PokerStars with a script
 
+
 This is only tested with pokerstarsmi.com but might work for other PokerStars variants
+
 
 I play PokerStars on iOS but want to review my hand history on macOS using PokerTracker 4
 
@@ -16,8 +18,11 @@ I configured PokerTracker 4 with the throwaway email address POP3 credentials an
 # How to use
 git clone https://github.com/reillychase/pokerstars-handhistory-export.git
 
+
 Replace YOUR_USERNAME and YOUR_PASSWORD
+
 (Optional) Change pokerstarsmi.com to the PokerStars website you are using
+
 
 pip3 install stealth_requests
 
