@@ -1,29 +1,55 @@
 # PokerStars Hand History Export
 Export hand history from PokerStars with a script
 
-
 This is only tested with pokerstarsmi.com but might work for other PokerStars variants
-
 
 I play PokerStars on iOS but want to review my hand history on macOS using PokerTracker 4
 
 I wrote this script so I can automatically export hand history on a cron job every half hour
 
-Even though the API call is for 7 days of hand history, in my experience PokerStars only sends 200 hands max, so I run it every half hour
+Even though the API call is for 7 days of hand history, in my experience PokerStars only sends 200 hands max, so I run it every 15 minutes to make sure I get all hands
 
-The export goes to my email and then I have a rule in Gmail to auto-forward it to a throwaway email address
+The export goes to my email and I have a rule in Gmail
 
-I configured PokerTracker 4 with the throwaway email address POP3 credentials and it can retrieve the exported hand history from there
+I configured PokerTracker 4 with the email address POP3 credentials and it can retrieve the exported hand history from there
+
+For security, to not share my actual email password with this script or PokerTracker 4, I have created a throwaway email address for my PokerStars account for this purpose
 
 # How to use
+Install git and download this repo
+```
+apt-get install git
 git clone https://github.com/reillychase/pokerstars-handhistory-export.git
+```
 
+Update these in main.py
 
-Replace YOUR_USERNAME and YOUR_PASSWORD
+```
+POP3_SERVER = 'pop.gmail.com'
+POP3_PORT = 995
+EMAIL_ADDRESS = ''  # Replace with your email
+EMAIL_PASSWORD = ''  # Replace with your app-specific password
+POKERSTARS_USERNAME = ''
+POKERSTARS_PASSWORD = ''
+POKERSTARS_WEBSITE = 'https://www.pokerstarsmi.com'
+```
 
-(Optional) Change pokerstarsmi.com to the PokerStars website you are using
+Next install dependencies
+```
+cd pokerstars-handhistory-export
+python3 -m venv .venv
+source .venv/bin/activate
+pip install stealth_requests
+```
+Create the shell script
+```
+nano main.sh
+/root/pokerstars-handhistory-export/.venv/bin/python3 /root/pokerstars-handhistory-export/main.py
+CTRL+X
+```
+Create the 15 miunte cron
+```
+crontab -e
+*/15 * * * * /root/pokerstars-handhistory-export/main.sh >> /root/pokerstars-handhistory-export/main.log 2>&1
+```
 
-
-pip3 install stealth_requests
-
-python3 main.py
