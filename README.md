@@ -1,5 +1,5 @@
 # PokerStars Hand History Export
-Export hand history from PokerStars with a script
+Export hand history from PokerStars with a script, now with the new email PIN login support
 
 This is only tested with pokerstarsmi.com but might work for other PokerStars variants
 
