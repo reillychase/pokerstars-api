@@ -44,7 +44,6 @@ cd /root/pokerstars-handhistory-export
 mv * /var/www/scripts
 cd /var/www/scripts
 mv index.php /var/www/html
-cd /var/www/scripts
 python3 -m venv .venv
 source .venv/bin/activate
 pip install stealth_requests
