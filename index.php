@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['run_once'])) {
         $output2 = 'Please wait 1 second before running again.';
     } else {
         // Run the toggle script with sudo
-        $command = '/var/www/html/scripts/main.sh 2>&1';
+        $command = '/var/www/scripts/main.sh 2>&1';
         $output2 = shell_exec($command);
         if ($output2 === null) {
             $output2 = 'Error: Failed to execute the script.';
