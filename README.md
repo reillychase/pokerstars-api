@@ -1,5 +1,5 @@
 # PokerStars Hand History Export
-Export hand history from PokerStars with a script, now with the new email PIN login support
+Export hand history from PokerStars with a script, now with the new email PIN login support and a webpage to toggle the cron on/off or run once
 
 This is only tested with pokerstarsmi.com but might work for other PokerStars variants
 
@@ -19,6 +19,7 @@ For security, to not share my actual email password with this script or PokerTra
 Install git and download this repo
 ```
 apt-get install git
+cd /root/
 git clone https://github.com/reillychase/pokerstars-handhistory-export.git
 ```
 
@@ -33,23 +34,25 @@ POKERSTARS_USERNAME = ''
 POKERSTARS_PASSWORD = ''
 POKERSTARS_WEBSITE = 'https://www.pokerstarsmi.com'
 ```
-
-Next install dependencies
+Install the webserver
 ```
-cd pokerstars-handhistory-export
+apt install apache2-utils -y
+```
+Move files into place
+```
+cd /root/pokerstars-handhistory-export
+mv * /var/www/scripts
+cd /var/www/scripts
+mv index.php /var/www/html
+cd /var/www/scripts
 python3 -m venv .venv
 source .venv/bin/activate
 pip install stealth_requests
+
 ```
-Create the shell script
-```
-nano main.sh
-/root/pokerstars-handhistory-export/.venv/bin/python3 /root/pokerstars-handhistory-export/main.py
-CTRL+X
-```
-Create the 15 miunte cron
+Create the 15 minute cron
 ```
 crontab -e
-*/15 * * * * /root/pokerstars-handhistory-export/main.sh >> /root/pokerstars-handhistory-export/main.log 2>&1
+*/15 * * * * /var/www/html/scripts/main.sh >> /var/www/html/scripts/main.log 2>&1
 ```
 
