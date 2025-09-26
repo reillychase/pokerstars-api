@@ -53,6 +53,6 @@ pip install stealth_requests
 Create the 15 minute cron
 ```
 crontab -e
-*/15 * * * * /var/www/html/scripts/main.sh >> /var/www/html/scripts/main.log 2>&1
+*/15 * * * * /var/www/scripts/main.sh >> /var/www/scripts/main.log 2>&1
 ```
 
