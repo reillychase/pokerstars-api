@@ -8,6 +8,6 @@ I wrote this script so I can automatically export hand history on a cron job
 
 Even though the API call for export_hands is for 7 days of hand history, in my experience PokerStars only sends 200 hands max, so I run it on a cron every 15 minutes to make sure I always get all hands while playing on iOS
 
-I am working on adding more features, the latest is check_balance
+I am working on adding more features, I would like to for example check_balance but the Authorization header is complicated to figure out
 
-Feel free to collab
+DM me on X to collab
